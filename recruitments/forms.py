@@ -5,40 +5,39 @@ from django.forms.widgets import CheckboxSelectMultiple
 
 #form to be used by candidates to submit resumes
 class FillResumeForm(forms.ModelForm):
-	
-    def __init__(self, *args, **kwargs): 
+
+    def __init__(self, *args, **kwargs):
         super(forms.ModelForm, self).__init__(*args, **kwargs)
         self.fields['name'].label = "Name *"
-        self.fields['roll_number'].label = "Roll Number * (eg. 14CO02)"
+        self.fields['roll_number'].label = "Roll Number * (eg. 15CO102)"
         self.fields['gender'].label = "Gender *"
         self.fields['phone_number'].label = "Phone Number * (10 digits)"
         self.fields['email_id'].label = "Email ID *"
-        self.fields['about_me'].label = "Tell us about yourself. *"
         self.fields['why_ie'].label = "Tell us why you'd like to be a part of IE. *"
-        self.fields['event_participation'].label = "Have you participated in IE events? How was your experience? *"
-        self.fields['event_participation'].required = True
         self.fields['core_sig_choice'].label = "What Core SIG(s) would you like to be a part of? *"
         self.fields['core_sig_choice'].widget = CheckboxSelectMultiple()
         self.fields['core_sig_choice'].queryset = SIGroup.objects.exclude(core=False)
-        self.fields['core_sig_interests'].label = "Tell us, briefly, why these SIG(s) interest you. *"
-        self.fields['core_sig_projects'].label = "Have you done any work relevant to the SIGs you chose?"
+        self.fields['core_sig_projects'].label = "Have you done any work relevant to the SIGs you chose? Do you have any new project ideas?"
         self.fields['core_sig_projects'].required = False
-        self.fields['next_tech'].label = "What technology do you think is the next big thing?"
-        self.fields['next_tech'].required = False
         self.fields['aux_sig_choice'].label = "What Auxiliary SIG(s) would you like to be a part of?"
         self.fields['aux_sig_choice'].widget = CheckboxSelectMultiple()
         self.fields['aux_sig_choice'].queryset = SIGroup.objects.exclude(core=True)
         self.fields['aux_sig_choice'].required = False
-        self.fields['aux_sig_interests'].label = "Do you have any ideas for new SIGs or projects? Please explain."
+        self.fields['aux_sig_interests'].label = "Do you have any ideas for new SIGs? Please explain."
         self.fields['aux_sig_interests'].required = False
-        self.fields['witty_question'].label = "If you're awarded a death penalty for being late for an IE meeting, what would your last words be?"
-        self.fields['witty_question'].required = False
-        self.fields['picture'].label = "Tell us what thoughts come to mind when you see the picture below."
-        self.fields['picture'].required = False
+        self.fields['event_participation'].label = "Have you participated in IE events? How was your experience? *"
+        self.fields['event_participation'].required = True
+        self.fields['video'].label = "Are you interested in Video Editing, Poster Designing? If yes, then which software/tools do you use?"
+        self.fields['video'].required = False
+        self.fields['spark'].label = "If you had a chance to speak for Spark, what would you talk about? *"
+        self.fields['about_me'].label = "If you were a brand, what would be your motto? Convince us that you are valuable. *"
+        self.fields['next_tech'].label = "What technology do you think is the next big thing w.r.t your interest SIG(s)? *"
+        self.fields['witty_question'].label = "In a small room, you have a refrigerator. If you left the door of the fridge open, what would happen to the temperature in the room? Explain in layman terms. *"
+        self.fields['picture'].label = "Tell us what thoughts come to mind when you see the picture below. *"
 
     def clean(self):
         return self.cleaned_data
-                    
+
     class Meta:
         model = models.Resume
         fields = [
@@ -47,15 +46,16 @@ class FillResumeForm(forms.ModelForm):
             'gender',
             'phone_number',
             'email_id',
-            'about_me',
-            'why_ie',
-            'event_participation',
-            'core_sig_choice',
-            'core_sig_interests',
+			'why_ie',
+			'core_sig_choice',
             'core_sig_projects',
-            'next_tech',
-            'aux_sig_choice',
+			'aux_sig_choice',
             'aux_sig_interests',
+			'event_participation',
+			'video',
+			'spark',
+            'about_me',
+            'next_tech',
             'witty_question',
             'picture'
         ]
@@ -64,7 +64,7 @@ class FillResumeForm(forms.ModelForm):
 #form to be used by members to grade resumes
 class EvaluateResumeForm(forms.ModelForm):
 
-    def __init__(self, *args, **kwargs): 
+    def __init__(self, *args, **kwargs):
         super(forms.ModelForm, self).__init__(*args, **kwargs)
         self.fields['score'].label = "Score *"
         self.fields['comments'].label = "Break-up of Score *"

@@ -12,13 +12,13 @@ import sets
 
 def home(request):
 	return render(request, 'flatpages/landing.html', {})
-	
+
 def submit_resume(request):
 	if request.method == 'GET':
 		form = forms.FillResumeForm()
 	else:
 		form = forms.FillResumeForm(request.POST)
-		
+
 		if form.is_valid():
 			new_resume = form.save()
 			new_resume.save()
@@ -47,21 +47,21 @@ def get_eval(request):
 @login_required
 def evaluate_resume(request,resume_id):
 	rounds = ['Not Qualified','Resume Evaluation Started','Personal Interview','Group Discussion','Final Interview','Selected']
-	
+
 	resume_id = request.GET['resume_id']
 	#in case the url has a trailing '/', in which case the resume_id will contain the slash as well
 	try:
 		int(resume_id)
 	except ValueError:
 		resume_id = resume_id[:-1]
-	
+
 	current_resume = models.Resume.objects.get(id=resume_id)
-	
+
 	if request.method == 'GET':
 		form = forms.EvaluateResumeForm()
 	else:
 		form = forms.EvaluateResumeForm(request.POST)
-		
+
 		if form.is_valid():
 			new_evaluation = form.save(commit=False)
 			new_evaluation.resume = current_resume
@@ -94,21 +94,21 @@ def evaluate_resume(request,resume_id):
 @login_required
 def evaluate_pigd(request,resume_id):
 	rounds = ['Not Qualified','Resume Evaluation Started','Personal Interview','Group Discussion','Final Interview','Selected']
-	
+
 	resume_id = request.GET['resume_id']
 	#in case the url has a trailing '/', in which case the resume_id will contain the slash as well
 	try:
 		int(resume_id)
 	except ValueError:
 		resume_id = resume_id[:-1]
-	
+
 	current_resume = models.Resume.objects.get(id=resume_id)
-	
+
 	if request.method == 'GET':
 		form = forms.EvaluateResumeForm()
 	else:
 		form = forms.EvaluateResumeForm(request.POST)
-		
+
 		if form.is_valid():
 			new_evaluation = form.save(commit=False)
 			new_evaluation.resume = current_resume
@@ -133,8 +133,7 @@ def evaluate_pigd(request,resume_id):
 			current_resume.save()
 			return render_to_response('flatpages/evaluation_success.html')
 	return render_to_response('flatpages/evaluation_form_layout.html',{'evaluationForm':form,'resume':current_resume,'pigd':True},context_instance=RequestContext(request))
-	
+
 def results_view(request):
-    result_list = models.Resume.objects.filter(qualified_for_round = 5).order_by('name')
+    result_list = models.Resume.objects.all().order_by('name')
     return render(request, 'flatpages/results.html', {"resumes":list(result_list)})
-	

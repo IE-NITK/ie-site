@@ -15,11 +15,10 @@ class Resume(models.Model):
         ('code','Code'),
         ('gadget','Gadget'),
         ('garage','Garage'),
-        ('finance','Finance'),
     )
 
     AUX_CHOICES = (
-        ('film','Film'),
+        ('book','Script'),
         ('vriddhi','Vriddhi'),
     )
 
@@ -35,9 +34,10 @@ class Resume(models.Model):
     why_ie = models.TextField(max_length=400)
     event_participation = models.TextField(max_length=400)
     core_sig_choice = models.ManyToManyField(SIGroup,related_name='core_sig_choice')
-    core_sig_interests = models.TextField(max_length=400)
     core_sig_projects = models.TextField(max_length=400)
     next_tech = models.TextField(max_length=400)
+    video = models.TextField(max_length=400)
+    spark = models.TextField(max_length=400)
     aux_sig_choice = models.ManyToManyField(SIGroup,related_name='aux_sig_choice')
     aux_sig_interests = models.TextField(max_length=400)
     picture = models.TextField(max_length=400)
