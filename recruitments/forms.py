@@ -29,7 +29,7 @@ class FillResumeForm(forms.ModelForm):
         self.fields['event_participation'].required = True
         self.fields['video'].label = "Are you interested in Video Editing, Poster Designing? If yes, then which software/tools do you use?"
         self.fields['video'].required = False
-        self.fields['spark'].label = "If you had a chance to speak for Spark, what would you talk about? *"
+        self.fields['spark'].label = "Spark is a TEDx inspired talk event aimed to promote creative thinking and sharing ideas. Given an opportunity, what would you want to talk about on the Spark platform? *"
         self.fields['about_me'].label = "If you were a brand, what would be your motto? Convince us that you are valuable. *"
         self.fields['next_tech'].label = "What technology do you think is the next big thing w.r.t your interest SIG(s)? *"
         self.fields['witty_question'].label = "In a small room, you have a refrigerator. If you left the door of the fridge open, what would happen to the temperature in the room? Explain in layman terms. *"

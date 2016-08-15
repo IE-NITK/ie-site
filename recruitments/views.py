@@ -38,7 +38,7 @@ def get_pi(request):
 
 @login_required
 def get_gd(request):
-	return render(request, 'flatpages/gds_to_be_evaluated.html', {"resumes":models.Resume.objects.filter(qualified_for_round=3).order_by('name','current_round')})
+	return render(request, 'flatpages/gds_to_be_evaluated.html', {"resumes":models.Resume.objects.all().order_by('name','current_round')})
 
 @login_required
 def get_eval(request):
