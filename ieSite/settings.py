@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     'SIG',
 	'recruitments',
     'bootstrapform',
+    'captcha',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -97,6 +98,16 @@ USE_L10N = True
 
 USE_TZ = True
 
+RECAPTCHA_PUBLIC_KEY = '6Ld77ScTAAAAAGNVXJf49mTOJ5-b1Cw86zHlkLP9'
+
+RECAPTCHA_PRIVATE_KEY = '6Ld77ScTAAAAACkguJuw2XoHLaC_uQmeA9LmeCXb'
+
+NOCAPTCHA = True
+
+RECAPTCHA_USE_SSL = True
+
+RECAPTCHA_PROXY = 'http://127.0.0.1:8000'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
@@ -137,6 +148,11 @@ AUTHENTICATION_BACKENDS = (
 ANONYMOUS_USER_ID = -1
 #To prevent python manage.py test from failing due to faked migrations.
 SOUTH_TESTS_MIGRATE = False
+
+SOUTH_MIGRATION_MODULES = {
+        'captcha': 'captcha.south_migrations',
+    }
+
 
 #TinyMCE configuration.
 
