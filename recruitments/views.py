@@ -42,7 +42,12 @@ def get_gd(request):
 
 @login_required
 def get_eval(request):
-	return render(request, 'flatpages/evaluations.html', {"resumes":models.ResumeEvaluation.objects.all().order_by('name')})
+	resumes = Resume.objects.filter(qualified_for_round=3)
+	resumes_pi = []
+	for resume in resumes:
+		evals = ResumeEvaluation.objects.filter(name=resume.name).order_by('-id')
+		resumes_pi.append(evals[0])
+	return render(request, 'flatpages/evaluations.html', {"resumes":resumes_pi})
 
 @login_required
 def evaluate_resume(request,resume_id):
