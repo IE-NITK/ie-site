@@ -32,6 +32,20 @@ def results_wait(request):
 	return render_to_response('flatpages/results_wait.html',{'title': 'Selected students for 16-17'},context_instance=RequestContext(request))
 
 @login_required
+def register_freshers(request):
+	if request.method == 'GET':
+		form = forms.FillFreshersForm()
+	else:
+		form = forms.FillFreshersForm(request.POST)
+		return render_to_response('flatpages/invitation.html')
+	return render(request, 'flatpages/resumes_to_be_evaluated.html',{'title': 'IE India Registration', 'ResumeForm':form})
+
+
+@login_required
+def freshers_invite(request):
+	return render(request, 'flatpages/invitation.html')
+
+@login_required
 def evaluate_view(request):
 	return render(request, 'flatpages/resumes_to_be_evaluated.html', {"resumes":models.Resume.objects.filter(qualified_for_round=1).order_by('name','current_round')})
 
