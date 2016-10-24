@@ -1,4 +1,5 @@
 from django import forms
+from django.db import models as model
 from recruitments import models
 from SIG.models import SIGroup
 from django.forms.widgets import CheckboxSelectMultiple
@@ -63,6 +64,14 @@ class FillResumeForm(forms.ModelForm):
             'captcha',
         ]
 
+
+class FillFreshersForm(forms.Form):
+
+    name = model.CharField(max_length=20)
+    branch = model.CharField(max_length=40)
+
+    def clean(self):
+        return self.cleaned_data
 
 #form to be used by members to grade resumes
 class EvaluateResumeForm(forms.ModelForm):

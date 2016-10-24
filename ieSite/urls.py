@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from . import views
+from recruitments import views as view
 from django.contrib import admin
 admin.autodiscover()
 
@@ -14,7 +15,9 @@ urlpatterns = patterns('',
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'projects/(?P<projectslug>[^/]+)/$','SIG.views.project_view',name = 'projects'),
     url(r'articles/(?P<articleslug>[^/]+)/$','SIG.views.article_view',name = 'articles'),
-    url(r'^flappy/', views.GetGame.as_view(), name = 'get_game')
+    url(r'^flappy/', views.GetGame.as_view(), name = 'get_game'),
+    url(r'^register/', view.register_freshers, name='freshers'),
+    url(r'^invite/', view.freshers_invite, name='invite'),
 )
 
 # static page placeholders can be created and added under flatpages

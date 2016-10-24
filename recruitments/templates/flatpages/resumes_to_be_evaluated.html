@@ -1,10 +1,10 @@
 {% extends "recruitments/base.html" %}
-
+{% load bootstrap %}
 
 
 {% block content %}
 
-<header class="vert">
+<!--header class="vert">
 	<h1>Resumes to be evaluated</h1>
 </header>
 
@@ -21,14 +21,79 @@
 			<td>{{resume.name}}</td>
 			<td>{{resume.current_round}}</td>
 			<td><a href="/recruitment/evaluate/?resume_id={{resume.id}}"><button class="btn btn-primary">Evaluate</button></a></td>
-	</tr>	
+	</tr>
 	{% endfor %}
 </table>
 
 {% else %}
 	<h2>All submitted resumes have been evaluated.</h2>
 {% endif %}
+<h2> Useless. For comments <h2-->
 
+<div class="container">
+	<h1 class="vert">{{ title }}</h1>
+	<div class="row">
+		<div class="form-group row">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
+				<div class="col-xs-10">
+					<input class="form-control" type="text" value="ABC" id="example-text-input">
+				</div>
+				</div>
+				<br>
+				<div class="form-group row">
+				<label for="example-search-input" class="col-xs-2 col-form-label">Branch</label>
+				<div class="col-xs-10">
+					<input class="form-control" type="search" value="Computer Science" id="example-search-input">
+				</div>
+				</div>
+				<br>
+				<div class="form-group row">
+				<label for="example-email-input" class="col-xs-2 col-form-label">Email</label>
+				<div class="col-xs-10">
+					<input class="form-control" type="email" value="abc@gmail.com" id="example-email-input">
+				</div>
+				</div>
+				<br>
+				<div class="form-group row">
+				<label for="example-tel-input" class="col-xs-2 col-form-label">Phone</label>
+				<div class="col-xs-10">
+					<input class="form-control" type="tel" value="91-9882211292" id="example-tel-input">
+				</div>
+				</div>
+				<br>
+				<div class="form-group row">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Core SIG</label>
+				<div class="col-xs-10">
+					<input class="form-control" type="Code" id="example-text-input">
+				</div>
+				</div>
+				<br>
+				<div class="form-group row">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Auxiliary SIG (if any)</label>
+				<div class="col-xs-10">
+					<input class="form-control" type="Vriddhi" id="example-text-input">
+				</div>
+				</div>
+				<br>
+				<div class="form-group row">
+				<label for="example-date-input" class="col-xs-2 col-form-label">Date of Birth</label>
+				<div class="col-xs-10">
+					<input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+				</div>
+				</div>
+				<br>
+				<div class="form-group row">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Reason for joining IE</label>
+				<div class="col-xs-10">
+					<input class="form-control" type="text" id="example-text-input">
+				</div>
+				</div>
+	</div>
+	<div class="form-group">
+		<br>
+  	<a href="/invite"><button class="btn btn-lg btn-primary center-block">Submit</button></a>
+	</div>
+</div>
 {% endblock %}
 
 
