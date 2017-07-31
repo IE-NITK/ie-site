@@ -18,11 +18,14 @@ def submit_resume(request):
 		form = forms.FillResumeForm()
 	else:
 		form = forms.FillResumeForm(request.POST)
-
+		print("Yo")
 		if form.is_valid():
+			print("Hello")
 			new_resume = form.save()
 			new_resume.save()
 			return render_to_response('flatpages/submission_success.html')
+		else:
+			print("Error bro")
 	return render_to_response('flatpages/form_layout.html',{'title': 'Candidate Resume Form', 'ResumeForm':form,'image':'{{ STATIC_URL }}img/picture_question.jpg'},context_instance=RequestContext(request))
 
 def resume_done(request):

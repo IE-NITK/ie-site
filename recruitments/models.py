@@ -17,10 +17,10 @@ class Resume(models.Model):
         ('garage','Garage'),
     )
 
-    AUX_CHOICES = (
-        ('book','Script'),
-        ('vriddhi','Vriddhi'),
-    )
+    # AUX_CHOICES = (
+    #     ('book','Script'),
+    #     ('vriddhi','Vriddhi'),
+    # )
 
     #TODO: Separate scoring and submitted attributes to avoid concurrency issues
 
@@ -33,15 +33,20 @@ class Resume(models.Model):
     about_me = models.TextField(max_length=400)
     why_ie = models.TextField(max_length=400)
     event_participation = models.TextField(max_length=400)
-    core_sig_choice = models.ManyToManyField(SIGroup,related_name='core_sig_choice')
+    # core_sig_choice = models.ManyToManyField(SIGroup,related_name='core_sig_choice')
+    # core_sig_choice_2 = models.ManyToManyField(SIGroup,related_name='core_sig_choice_2')
+    core_sig_choice = models.CharField(max_length=10, choices=CORE_CHOICES, default='code')
+    core_sig_choice_2 = models.CharField(max_length=10, choices=CORE_CHOICES, blank=True)
     core_sig_projects = models.TextField(max_length=400)
-    next_tech = models.TextField(max_length=400)
+    script_essay = models.TextField(max_length=400)
+    robotics_essay = models.TextField(max_length=400)
+    # next_tech = models.TextField(max_length=400)
     video = models.TextField(max_length=400)
-    spark = models.TextField(max_length=400)
-    aux_sig_choice = models.ManyToManyField(SIGroup,related_name='aux_sig_choice')
-    aux_sig_interests = models.TextField(max_length=400)
+    # spark = models.TextField(max_length=400)
+    # aux_sig_choice = models.ManyToManyField(SIGroup,related_name='aux_sig_choice')
+    # aux_sig_interests = models.TextField(max_length=400)
     picture = models.TextField(max_length=400)
-    witty_question = models.TextField(max_length=400)
+    #witty_question = models.TextField(max_length=400)
     timestamp = models.DateTimeField(default=datetime.now())
     qualified_for_round = models.IntegerField(default=1)
     current_round = models.CharField(max_length=30,default='Pending Resume Evaluation')
