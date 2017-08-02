@@ -7,28 +7,28 @@ from captcha.fields import ReCaptchaField
 
 #form to be used by candidates to submit resumes
 class FillResumeForm(forms.ModelForm):
-    # captcha = ReCaptchaField()
+    captcha = ReCaptchaField()
 
     def __init__(self, *args, **kwargs):
         super(forms.ModelForm, self).__init__(*args, **kwargs)
         self.fields['name'].label = "Name *"
         self.fields['roll_number'].label = "Roll Number * (eg. 16CO102)"
         self.fields['gender'].label = "Gender *"
-        self.fields['phone_number'].label = "WhatsApp Number * (10 digits)"
+        self.fields['phone_number'].label = "Phone number(SMS/calls) *"
         self.fields['email_id'].label = "Email ID *"
         self.fields['why_ie'].label = "Why are you looking to join a technical club and why specifically IE? *"
-        self.fields['core_sig_choice'].label = "What Core SIG(s) would you like to be a part of? *"
+        self.fields['core_sig_choice'].label = "What Core SIG would you like to be a part of? *"
         #self.fields['core_sig_choice'].widget = CheckboxSelectMultiple()
         # self.fields['core_sig_choice'].widget = forms.RadioSelect()
         # self.fields['core_sig_choice'].queryset = SIGroup.objects.exclude(core=False)
-        self.fields['core_sig_choice_2'].label = "Any other Core SIG(s) you would like to be a part of, if any?"
+        self.fields['core_sig_choice_2'].label = "Any other Core SIG  you would like to be a part of, if any?"
         # self.fields['core_sig_choice_2'].widget = CheckboxSelectMultiple()
         # self.fields['core_sig_choice_2'].queryset = SIGroup.objects.exclude(core=False)
-        self.fields['core_sig_projects'].label = "Have you done any work relevant to the SIGs you chose? Do you have any new project ideas?"
+        self.fields['core_sig_projects'].label = "Write a short description about any interesting projects you have worked on,if any."
         #self.fields['core_sig_projects'].required = False
-        self.fields['script_essay'].label = "Script essay"
+        self.fields['script_essay'].label = "Answer this question if you are interested in Script SIG - Invent something, describe what it does, and why you made it. It shouldn't be drawn, and it doesn't have to be scientifically realistic, just something that doesn't exist in day to day life. (Ex: Pillow speakers, to listen to music while sleeping, without the earphones poking my ears)"
         self.fields['script_essay'].required = False
-        self.fields['robotics_essay'].label = "Robotics essay"
+        self.fields['robotics_essay'].label = "Are you ready to challenge yourself to our robotics problem statement? (YES/NO) If Yes you will receive an email with the question before your Interview "
         self.fields['robotics_essay'].required = False
         # self.fields['aux_sig_choice'].label = "What Auxiliary SIG(s) would you like to be a part of?"
         # self.fields['aux_sig_choice'].widget = CheckboxSelectMultiple()
@@ -72,7 +72,7 @@ class FillResumeForm(forms.ModelForm):
             #'next_tech',
             #'witty_question',
             'picture',
-            # 'captcha',
+            'captcha',
         ]
 
 
