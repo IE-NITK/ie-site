@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^flappy/', views.GetGame.as_view(), name = 'get_game'),
     url(r'^register/', view.register_freshers, name='freshers'),
     url(r'^invite/', view.freshers_invite, name='invite'),
+    url(r'^captcha/', include('captcha.urls')),
 )
 
 # static page placeholders can be created and added under flatpages

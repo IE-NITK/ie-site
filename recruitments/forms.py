@@ -3,11 +3,13 @@ from django.db import models as model
 from recruitments import models
 from SIG.models import SIGroup
 from django.forms.widgets import CheckboxSelectMultiple
-from captcha.fields import ReCaptchaField
+# from captcha.fields import ReCaptchaField
+from captcha.fields import CaptchaField
 
 #form to be used by candidates to submit resumes
 class FillResumeForm(forms.ModelForm):
     # captcha = ReCaptchaField()
+    captcha = CaptchaField()
 
     def __init__(self, *args, **kwargs):
         super(forms.ModelForm, self).__init__(*args, **kwargs)
@@ -72,7 +74,7 @@ class FillResumeForm(forms.ModelForm):
             #'next_tech',
             #'witty_question',
             'picture',
-            # 'captcha',
+            'captcha',
         ]
 
 
