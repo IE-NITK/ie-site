@@ -28,7 +28,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ie.nitk.ac.in','10.4.0.67']
 
 
 # Application definition
@@ -84,6 +84,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+#sendgrid details
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -98,9 +100,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-RECAPTCHA_PUBLIC_KEY = '6Ld77ScTAAAAAGNVXJf49mTOJ5-b1Cw86zHlkLP9'
+RECAPTCHA_PUBLIC_KEY = '6LdJfSsUAAAAAMr1rneWfF1h8gTCFnlMeX3p9Ok4'
 
-RECAPTCHA_PRIVATE_KEY = '6Ld77ScTAAAAACkguJuw2XoHLaC_uQmeA9LmeCXb'
+RECAPTCHA_PRIVATE_KEY = '6LdJfSsUAAAAAAzzeo7bOuir1K81gy2W20ll6Zm_'
 
 NOCAPTCHA = True
 
