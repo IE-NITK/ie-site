@@ -13,7 +13,7 @@ django-bootstrap-form==3.2
 django-guardian==1.2.0
 django-staticfiles==1.2.1
 django-tinymce==1.5.2
-gunicorn==18.0
+gunicorn==19.5.0
 html5lib==0.999
 python-decouple==2.2
 six==1.7.2
